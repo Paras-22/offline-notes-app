@@ -1,0 +1,42 @@
+/* Paras: Simple styles for the notes app */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+}
+
+.app {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+
+form {
+  display: flex;
+  gap: 8px;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.status.online {
+  color: green;
+}
+
+.status.offline {
+  color: red;
+}
