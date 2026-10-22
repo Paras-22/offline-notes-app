@@ -24,6 +24,8 @@ self.addEventListener('activate', (event) => {
 // Fetch step - I try the network first and save a copy in the cache.
 // If there is no internet, I return the file from the cache instead.
 // This way the Vite build files (JS/CSS with hashed names) also get cached.
+// ignoreVary is needed because the preview server sends "Vary: Origin",
+// without it the CSS file was not found in the cache when offline.
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return
 
@@ -35,7 +37,7 @@ self.addEventListener('fetch', (event) => {
         return response
       })
       .catch(() =>
-        caches.match(event.request).then((cached) => cached || caches.match('/index.html'))
+        caches.match(event.request, { ignoreVary: true }).then((cached) => cached || caches.match('/index.html'))
       )
   )
 })
