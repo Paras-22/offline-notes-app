@@ -1,17 +1,17 @@
-// Paras: This is my Service Worker. It caches the static files so the app works offline.
+// This is my Service Worker. It caches the static files so the app works offline.
 
 const CACHE_NAME = 'notes-app-v1'
 
-// Paras: These are the main static files I cache when the service worker installs
+// These are the main static files I cache when the service worker installs
 const STATIC_FILES = ['/', '/index.html', '/manifest.json', '/vite.svg']
 
-// Paras: Install step - here I did the caching of the static files
+// Install step - here I did the caching of the static files
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_FILES)))
   self.skipWaiting()
 })
 
-// Paras: Activate step - here I delete old caches if the cache name changes
+// Activate step - here I delete old caches if the cache name changes
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -21,7 +21,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim()
 })
 
-// Paras: Fetch step - I try the network first and save a copy in the cache.
+// Fetch step - I try the network first and save a copy in the cache.
 // If there is no internet, I return the file from the cache instead.
 // This way the Vite build files (JS/CSS with hashed names) also get cached.
 self.addEventListener('fetch', (event) => {

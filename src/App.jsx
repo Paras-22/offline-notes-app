@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react'
 import { addNote } from './db/AddNotes'
 import { getNotes } from './db/GetNotes'
 
-// Paras: This is my simple React UI.
+// This is my simple React UI.
 // One text box to add a note and a list that shows all the notes from IndexedDB.
 function App() {
   const [text, setText] = useState('')
   const [notes, setNotes] = useState([])
   const [online, setOnline] = useState(navigator.onLine)
 
-  // Paras: Here I load all notes from IndexedDB
+  // Here I load all notes from IndexedDB
   async function loadNotes() {
     setNotes(await getNotes())
   }
 
-  // Paras: When the app starts I load the notes and listen for online/offline changes
+  // When the app starts I load the notes and listen for online/offline changes
   useEffect(() => {
     loadNotes()
     const update = () => setOnline(navigator.onLine)
@@ -26,7 +26,7 @@ function App() {
     }
   }, [])
 
-  // Paras: Here I did the add button logic, empty notes are not saved
+  // Here I did the add button logic, empty notes are not saved
   async function handleSubmit(e) {
     e.preventDefault()
     if (!text.trim()) return

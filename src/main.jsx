@@ -9,7 +9,7 @@ createRoot(document.getElementById('root')).render(
   </StrictMode>,
 )
 
-// Paras: Here I register the Service Worker (only if the browser supports it)
+// Here I register the Service Worker (only if the browser supports it)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
